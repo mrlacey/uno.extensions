@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<UseMaui>true</UseMaui>
+		<NoWarn>$(NoWarn);CS1591;NU5104;NU5048</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Using Remove="Microsoft.Maui.*" />
+		<None Include="build\*.props;build\*.targets" Pack="true" PackagePath="buildTransitive" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!--<PackageReference Include="Uno.Extensions.Hosting.WinUI" Version="2.3.0-dev.759" />-->
+		<PackageReference Include="Uno.WinUI" />
+	</ItemGroup>
+
+	<PropertyGroup Condition=" $(TargetFramework.Contains('-windows10')) ">
+		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
+		<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+	</PropertyGroup>
+</Project>

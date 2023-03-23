@@ -1,0 +1,33 @@
+<Project>
+  <!--<PropertyGroup>
+    <_ResizetizerIsWindowsAppSdk>False</_ResizetizerIsWindowsAppSdk>
+    <_ResizetizerIsUWPApp>False</_ResizetizerIsUWPApp>
+  </PropertyGroup>-->
+
+  <PropertyGroup>
+    <UsingMicrosoftMauiResizetizerSdk>false</UsingMicrosoftMauiResizetizerSdk>
+  </PropertyGroup>
+  <ItemGroup>
+    <Using Remove="Microsoft.Maui.*" />
+    <Analyzer Remove="Microsoft.Maui.Controls.SourceGen" />
+    <MauiXaml Remove="**\*.xaml" />
+    <MauiAsset Remove="@(MauiAsset)" />
+    <MauiImage Remove="@(MauiImage)" />
+    <MauiIcon Remove="@(MauiIcon)" />
+    <MauiFont Remove="@(MauiFont)" />
+    <MauiSplashScreen Remove="@(MauiSplashScreen)" />
+    <_MauiImplicitPackageReference Remove="Microsoft.Maui.Resizetizer" />
+    <PackageReference Remove="Microsoft.Maui.Resizetizer" />
+    <Page Update="**\*.xaml" XamlRuntime="WinUI" Generator="MSBuild:Compile" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvailableItemName Remove="MauiAsset" />
+    <AvailableItemName Remove="MauiImage" />
+    <AvailableItemName Remove="MauiIcon" />
+    <AvailableItemName Remove="MauiFont" />
+    <AvailableItemName Remove="MauiSplashScreen" />
+  </ItemGroup>
+
+  
+</Project>

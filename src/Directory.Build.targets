@@ -46,7 +46,7 @@
 		Project="$(MSBuildThisFileDirectory)\Uno.Extensions.Core.Generators\buildTransitive\Uno.Extensions.Core.props" />
 
 	<Choose>
-		<When Condition="$(_IsWinUI)">
+		<When Condition="$(_IsWinUI) AND $(UseMaui) != true">
 			<ItemGroup>
 				<PackageReference Include="Microsoft.WindowsAppSDK" />
 				<PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
